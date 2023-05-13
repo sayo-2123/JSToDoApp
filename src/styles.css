@@ -1,6 +1,10 @@
 body {
   font-family: sans-serif;
 }
+
+p{
+  margin: 0px;
+}
 input {
   border-radius: 16px;
   border: none;
@@ -22,6 +26,7 @@ button:hover {
 
 .list-row {
   margin-right: 8px;
+  margin-bottom: 3px;
 }
 
 .input-area {
