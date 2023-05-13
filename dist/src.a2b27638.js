@@ -190,11 +190,11 @@ var onClickAdd = function onClickAdd() {
   var $li = document.createElement("li");
   $li.innerText = inputText;
 
-  // button(完了)タグ生成
+  // button(完了)タグ生成ß
   var $completeButton = document.createElement("button");
   $completeButton.innerText = "完了";
   $completeButton.addEventListener("click", function () {
-    alert("完了");
+    deleteFromIncompleteList($completeButton.parentNode);
   });
 
   // button(削除)タグ生成
@@ -202,8 +202,7 @@ var onClickAdd = function onClickAdd() {
   $deleteButton.innerText = "削除";
   $deleteButton.addEventListener("click", function () {
     // 押された削除ボタンの親タグ(div)を未完了リストから削除
-    var $deleteTarget = $deleteButton.parentNode;
-    document.getElementById("incomplete-list").removeChild($deleteTarget);
+    deleteFromIncompleteList($deleteButton.parentNode);
   });
 
   // divタグの子要素に各要素を設定
@@ -213,6 +212,11 @@ var onClickAdd = function onClickAdd() {
 
   // 未完了リストに追加
   document.getElementById("incomplete-list").appendChild($div);
+};
+
+// 未完了リストから指定の要素を削除
+var deleteFromIncompleteList = function deleteFromIncompleteList(target) {
+  document.getElementById("incomplete-list").removeChild(target);
 };
 document.getElementById("add-button").addEventListener("click", function () {
   return onClickAdd();
@@ -242,7 +246,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44275" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39365" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
