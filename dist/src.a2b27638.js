@@ -184,17 +184,38 @@ var onClickAdd = function onClickAdd() {
   // div生成
   var $div = document.createElement("div");
   $div.className = "list-row";
-  console.log($div);
 
   // liタグ生成
   var $li = document.createElement("li");
   $li.innerText = inputText;
 
-  // button(完了)タグ生成ß
+  // button(完了)タグ生成
   var $completeButton = document.createElement("button");
   $completeButton.innerText = "完了";
   $completeButton.addEventListener("click", function () {
+    //　押された完了ボタンの親タグ(div)を未完了リストから削除
     deleteFromIncompleteList($completeButton.parentNode);
+
+    // 完了リストに追加する要素
+    var $addTarget = $completeButton.parentNode;
+    // ToDo内容テキストを取得
+    var text = $addTarget.firstElementChild.innerText;
+
+    // div以下を初期化
+    $addTarget.textContent = null;
+
+    // liタグ生成
+    var $li = document.createElement("li");
+    $li.innerText = text;
+
+    // buttonタグ生成
+    var $backButton = document.createElement("button");
+    $backButton.innerText = "戻す";
+
+    // divタグの子要素に各要素を設定
+    $addTarget.appendChild($li);
+    $addTarget.appendChild($backButton);
+    console.log($addTarget);
   });
 
   // button(削除)タグ生成
